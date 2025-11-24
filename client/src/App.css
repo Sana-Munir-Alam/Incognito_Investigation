@@ -1,0 +1,222 @@
+/* App.css - Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-black: #0B0C10;
+  --color-blue: #0033FF;
+  --color-red: #C70039;
+  --color-purple: #3D0066;
+  --color-silver: #C0C0C0;
+  --grid-desktop: repeat(12, 1fr);
+  --grid-tablet: repeat(8, 1fr);
+  --grid-mobile: repeat(4, 1fr);
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-silver);
+  font-family: 'Orbitron', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--color-blue), var(--color-red));
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--color-red), var(--color-blue));
+}
+
+/* ===== GLOBAL BUTTON STYLES ===== */
+button {
+  transition: all 0.1s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+button:active {
+  transform: scale(0.97) !important;
+  filter: brightness(0.85) !important;
+}
+
+button:disabled:active {
+  transform: scale(1) !important;
+  filter: brightness(1) !important;
+}
+
+/* Silver shine effect for buttons */
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(192, 192, 192, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+/* Common button styles */
+.btn-primary {
+  background: linear-gradient(45deg, var(--color-blue), var(--color-red));
+  border: none;
+  padding: 12px 30px;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 51, 255, 0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-silver);
+  color: var(--color-silver);
+  padding: 12px 20px;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.btn-secondary:hover {
+  background: rgba(192, 192, 192, 0.1);
+}
+
+/* Form styles */
+.form-container {
+  background: rgba(11, 12, 16, 0.8);
+  border: 1px solid var(--color-blue);
+  padding: 30px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.form-input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-blue);
+  color: var(--color-silver);
+  padding: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 51, 255, 0.5);
+  border-color: var(--color-blue);
+}
+
+.form-input::placeholder {
+  color: #666;
+  text-transform: none;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--color-silver);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--color-black);
+  border: 2px solid var(--color-blue);
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-blue);
+  padding-bottom: 10px;
+}
+
+.modal-header h3 {
+  color: var(--color-silver);
+  text-shadow: 0 0 10px rgba(0, 51, 255, 0.5);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--color-silver);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  color: var(--color-red);
+}
