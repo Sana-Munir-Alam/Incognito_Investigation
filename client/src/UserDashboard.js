@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { API_BASE_URL } from './config';
 import './UserDashboard.css';
 
 const UserDashboard = ({ user, onLogout }) => {
@@ -55,7 +56,7 @@ const UserDashboard = ({ user, onLogout }) => {
   useEffect(() => {
     const fetchUserStatus = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/user/status/${user.team}`);
+        const response = await fetch(`${API_BASE_URL}/api/user/status/${user.team}`);
         const data = await response.json();
         
         if (response.ok && data.success) {
@@ -75,7 +76,7 @@ const UserDashboard = ({ user, onLogout }) => {
   useEffect(() => {
     const checkPuzzleStatus = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/user/puzzle-status/${user.team}`);
+        const response = await fetch(`${API_BASE_URL}/api/user/puzzle-status/${user.team}`);
         const data = await response.json();
         if (response.ok && data.success) {
           setSpecialPuzzles(data.specialPuzzles);
@@ -96,7 +97,7 @@ const UserDashboard = ({ user, onLogout }) => {
   // Fetch attack popups
   const fetchAttackPopups = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/user/attack-popups/${user.team}`);
+      const response = await fetch(`${API_BASE_URL}/api/user/attack-popups/${user.team}`);
       const data = await response.json();
       
       if (response.ok && data.success && data.popups.length > 0) {
@@ -125,7 +126,7 @@ const UserDashboard = ({ user, onLogout }) => {
     if (showPuzzleModal) {
       const checkPuzzleStatus = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/api/user/puzzle-status/${user.team}`);
+          const response = await fetch(`${API_BASE_URL}/api/user/puzzle-status/${user.team}`);
           const data = await response.json();
           if (response.ok && data.success) {
             setSpecialPuzzles(data.specialPuzzles);
@@ -152,7 +153,7 @@ const UserDashboard = ({ user, onLogout }) => {
   // Dismiss attack popup
   const handleDismissPopup = async (popupId) => {
     try {
-      await fetch('http://localhost:5000/api/user/dismiss-popup', {
+      await fetch(`${API_BASE_URL}/api/user/dismiss-popup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -178,7 +179,7 @@ const UserDashboard = ({ user, onLogout }) => {
   // Fetch story messages
   const fetchStoryMessages = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/user/story-messages?teamName=${user.team}`);
+      const response = await fetch(`${API_BASE_URL}/api/user/story-messages?teamName=${user.team}`);
       const data = await response.json();
       
       if (response.ok && data.success) {
@@ -198,7 +199,7 @@ const UserDashboard = ({ user, onLogout }) => {
   // Mark messages as seen on backend
   const markMessagesAsSeen = async () => {
     try {
-      await fetch('http://localhost:5000/api/user/mark-messages-seen', {
+      await fetch(`${API_BASE_URL}/api/user/mark-messages-seen`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -246,7 +247,7 @@ const UserDashboard = ({ user, onLogout }) => {
 
   const handlePuzzleSubmit = async (puzzleId) => {
   try {
-    const response = await fetch('http://localhost:5000/api/user/submit-special-puzzle', {
+    const response = await fetch(`${API_BASE_URL}/api/user/submit-special-puzzle`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -298,7 +299,7 @@ const UserDashboard = ({ user, onLogout }) => {
     }
     
     try {
-      const response = await fetch('http://localhost:5000/api/user/submit-code', {
+      const response = await fetch(`${API_BASE_URL}/api/user/submit-code`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -343,7 +344,7 @@ const UserDashboard = ({ user, onLogout }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/submit-suspects', {
+      const response = await fetch(`${API_BASE_URL}/api/user/submit-suspects`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

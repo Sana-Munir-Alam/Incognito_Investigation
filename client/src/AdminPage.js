@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from './config';
 import './AdminPage.css';
 
 const AdminPage = ({ onLogout }) => {
@@ -69,7 +70,7 @@ const AdminPage = ({ onLogout }) => {
   // Fetch teams data
   const fetchTeams = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/teams');
+      const response = await fetch(`${API_BASE_URL}/api/admin/teams`);
       const data = await response.json();
       if (response.ok) {
         setTeamsData(data);
@@ -86,7 +87,7 @@ const AdminPage = ({ onLogout }) => {
   // Fetch button status
   const fetchButtonStatus = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/button-status');
+      const response = await fetch(`${API_BASE_URL}/api/admin/button-status`);
       const data = await response.json();
       if (response.ok && data.success) {
         setButtonStatus(data.buttonStatus);
@@ -99,7 +100,7 @@ const AdminPage = ({ onLogout }) => {
   // Fetch notifications
   const fetchNotifications = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/puzzle-notifications');
+      const response = await fetch(`${API_BASE_URL}/api/admin/puzzle-notifications`);
       const data = await response.json();
       if (response.ok && data.notifications.length > 0) {
         // Show the most recent notification
@@ -133,7 +134,7 @@ const AdminPage = ({ onLogout }) => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:5000/api/admin/create-team', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/create-team`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -167,7 +168,7 @@ const AdminPage = ({ onLogout }) => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:5000/api/admin/send-message', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/send-message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -206,7 +207,7 @@ const AdminPage = ({ onLogout }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/admin/reset-game', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/reset-game`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -241,7 +242,7 @@ const AdminPage = ({ onLogout }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/admin/delete-everything', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/delete-everything`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -277,7 +278,7 @@ const AdminPage = ({ onLogout }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/admin/reset-buttons', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/reset-buttons`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -305,7 +306,7 @@ const AdminPage = ({ onLogout }) => {
 
   const handleActivatePuzzle = async (puzzleNumber) => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/activate-special-puzzle', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/activate-special-puzzle`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -330,7 +331,7 @@ const AdminPage = ({ onLogout }) => {
 
   const handleActivateSubmit = async (subAlliance) => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/activate-submit', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/activate-submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -384,7 +385,7 @@ const AdminPage = ({ onLogout }) => {
 
   const executeAttack = async (attackerAlliance, targetSubAlliance, attackType) => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/launch-attack', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/launch-attack`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,6 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import ElectricBorder from './ElectricBorder';
 import Galaxy from './Galaxy';
 import './Login.css';
+import { API_BASE_URL } from './config';
 
 const Login = ({ onLogin, onBack }) => {
   const [loginType, setLoginType] = useState('participant');
@@ -40,7 +41,7 @@ const Login = ({ onLogin, onBack }) => {
     } else {
       // Participant login - will connect to backend
       try {
-        const response = await fetch('http://localhost:5000/api/auth/login', {
+        const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
