@@ -50,7 +50,7 @@ const AdminPage = ({ onLogout }) => {
   });
 
   const [messageData, setMessageData] = useState({
-    sender: 'ALEXANDER WHITEHALL',
+    sender: 'SAMEUL JACKSON',
     message: ''
   });
 
@@ -186,7 +186,7 @@ const AdminPage = ({ onLogout }) => {
         alert('Message sent to all teams!');
         setShowMessageModal(false);
         setMessageData({
-          sender: 'ALEXANDER WHITEHALL',
+          sender: 'SAMEUL JACKSON',
           message: ''
         });
       } else {
@@ -1194,5 +1194,6 @@ const AdminPage = ({ onLogout }) => {
     </div>
   );
 };
+
 
 export default AdminPage;
